@@ -1,0 +1,14 @@
+﻿Build started 5/11/2017 8:10:21 AM.
+     1>Project "C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\PA14\PA14 AsmLib\PA14 AsmLib.vcxproj" on node 2 (Build target(s)).
+     1>_MASM:
+         Assembling MorganC - PA14 - AsmSource.asm...
+         cmd.exe /C "C:\Users\Cody Morgan\AppData\Local\Temp\tmpa31eb7becc1d43f78e76aa4ac1726152.cmd"
+         ml.exe /c /nologo /Zi /Fo"Debug\MorganC - PA14 - AsmSource.obj" /W3 /errorReport:prompt  /Ta"MorganC - PA14 - AsmSource.asm"
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\PA14\Debug\PA14 AsmLib.lib" /NOLOGO "Debug\MorganC - PA14 - AsmSource.obj"
+         PA14 AsmLib.vcxproj -> C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\PA14\Debug\PA14 AsmLib.lib
+     1>Done Building Project "C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\PA14\PA14 AsmLib\PA14 AsmLib.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.38

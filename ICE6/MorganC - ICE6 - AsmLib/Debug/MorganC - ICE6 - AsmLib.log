@@ -1,0 +1,14 @@
+﻿Build started 3/9/2017 9:20:52 PM.
+     1>Project "C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\ICE6\MorganC - ICE6 - AsmLib\MorganC - ICE6 - AsmLib.vcxproj" on node 2 (Build target(s)).
+     1>_MASM:
+         Assembling MorganC - ICE6 - AsmSource.asm...
+         cmd.exe /C "C:\Users\Cody Morgan\AppData\Local\Temp\tmpb5fae7bcd9bb4f2ab732450b1bbe8037.cmd"
+         ml.exe /c /nologo /Zi /Fo"Debug\MorganC - ICE6 - AsmSource.obj" /W3 /errorReport:prompt  /Ta"MorganC - ICE6 - AsmSource.asm"
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\ICE6\Debug\MorganC - ICE6 - AsmLib.lib" /NOLOGO "Debug\MorganC - ICE6 - AsmSource.obj"
+         MorganC - ICE6 - AsmLib.vcxproj -> C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\ICE6\Debug\MorganC - ICE6 - AsmLib.lib
+     1>Done Building Project "C:\Users\Cody Morgan\Desktop\Assembly - Machine Language\ICE6\MorganC - ICE6 - AsmLib\MorganC - ICE6 - AsmLib.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.58

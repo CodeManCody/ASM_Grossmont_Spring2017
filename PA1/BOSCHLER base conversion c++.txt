@@ -1,0 +1,157 @@
+/**
+* @class CSIS 165 - Assembly Language / Machine Architecture
+* @author PA Solution
+* @instructor Bochsler
+* @assignment Week 1
+* @date 9 Feb 2017
+*
+* @brief
+* Collect user input of decimal base and a string of number to be converted.
+* Convert and display the input string to a string in binary, decimal and hex.
+* Required input bases are binary, decimal and hex
+*/
+
+#include "stdafx.h"
+#include <ctype.h>
+
+#define	MAX_STR_LEN		80
+#define	DEC_BASE		'0'
+#define	ALPH_BASE		('a' - 10)
+
+/**
+* This function scans an input string and returns a boolean
+* based on the status of whether invalid string chars are
+* found for the provided base.
+*
+* @param [in] base			Base of the input string
+* @param [in] inString		Null terminated input string
+*
+* @retval True			String is comprised of valid chars
+* @retval False			String has invalid chars
+*/
+static bool
+isValidChars(int base, char *inString)
+{
+	bool isok = true;		// assume valid
+
+							// for each char and no problems
+	for (; (*inString && isok); inString++) {
+		*inString = tolower(*inString);		// convert to lowercase
+								// validity of this char, exit on first fail
+		isok = (isdigit(*inString) && ((*inString - DEC_BASE) < base)) ||
+			(isalpha(*inString) && ((*inString - ALPH_BASE) < base));
+	}
+	return isok;
+}
+
+// recursive version - simpler, but what is the disadvantage?
+static bool
+isValidCharsR(int base, char *inString)
+{
+	return ((*inString == NULL) ? true :
+		((*inString = tolower(*inString)),
+		((isdigit(*inString) && ((*inString - DEC_BASE) < base)) ||
+			(isalpha(*inString) && ((*inString - ALPH_BASE) < base))) &&
+			isValidCharsR(base, ++inString)));
+}
+
+/**
+* This converts a null terminated input string to the provided
+* base.
+* Assumes all characters are valid.
+* Assumes all alpha chars are lower case.
+* Does Not handle negative input strings
+*
+* @param [in] base		Base of the input string
+* @param [in] inString	Null terminated input string
+*
+* @retval 			integer conversion of string value
+*					-1 on overflow
+*/
+static int
+stringToInt(int base, char *inString)
+{
+	int result = 0, prev_result = 0;
+
+	// for each character in the string
+	for (; *inString; inString++) {
+		// we have more, so 'shift left'
+		result *= base;
+		// and add the least significant
+		result += *inString - (isdigit(*inString) ? DEC_BASE : ALPH_BASE);
+		if (result < prev_result) {
+			return (-1);
+		}
+		prev_result = result;
+	}
+	return result;
+}
+
+/**
+* This converts an integer null terminated input string to the provided
+* base.
+* Assumes the input string is null filled.
+* Assumes all alpha chars are lower case.
+* Does Not handle negative input.
+*
+* @param [in] base			Base of the output string
+* @param [in] inConvert		integer to be converted
+* @param [in,out] inString	Null filled string buffer, ret is next loc to be filled
+*
+* @retval 					Pointer to next char to be filled
+*/
+static char *
+intToBaseStr(int base, int inConvert, char *inString)
+{
+	int remainder = inConvert % base;
+	int quotient = inConvert / base;
+
+	if (quotient != 0) {
+		// convert the remainder and pass back the next loc
+		inString = intToBaseStr(base, quotient, inString);
+	}
+	// insert this character
+	*inString = remainder + ((remainder < 10) ? DEC_BASE : ALPH_BASE);
+
+	// increment and return the next location to be filled
+	return ++inString;
+}
+
+
+int main()
+{
+	char inputStr[MAX_STR_LEN];
+	char bstr[MAX_STR_LEN] = "", dstr[MAX_STR_LEN] = "", hstr[MAX_STR_LEN] = "";
+	int inputBase = 0, inputNum = 0;
+	int returnValue = 1;						// assume error
+
+	// get the user input from the console
+	printf("Enter decimal base and string to be converted: ");
+	if (scanf_s("%d %s", &inputBase, &inputStr, sizeof(inputStr)) != 2) {
+		printf("Invalid input characters\n");
+	} else if ((inputBase < 2) || (inputBase > 36)) {
+		printf("Invalid base\n");
+	} else
+
+		// verify the string input for valid characters
+		if (isValidChars(inputBase, inputStr)) {
+			// convert the input string of base to an integer
+			if ((inputNum = stringToInt(inputBase, inputStr)) < 0) {
+				printf("Input conversion string too large\n");
+				return returnValue;
+			}
+
+			// convert the integer to a string of each base
+			(void)intToBaseStr(2, inputNum, bstr);
+			(void)intToBaseStr(10, inputNum, dstr);
+			(void)intToBaseStr(16, inputNum, hstr);
+
+			// display the output
+			printf(" Converted input: bin[%s] dec[%s] hex[%s]\n",
+				bstr, dstr, hstr);
+			returnValue = 0;		// success
+		} else {
+			printf(" Invalid input characters\n");
+		}
+		return returnValue;
+}

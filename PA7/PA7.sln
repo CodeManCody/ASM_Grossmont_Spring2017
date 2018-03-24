@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorganC - PA7", "PA7\PA7.vcxproj", "{2B48743D-2E23-4238-8BFD-D48E0C614D4A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorganC - PA7 - AsmLib", "MorganC - PA7 - AsmLib\MorganC - PA7 - AsmLib.vcxproj", "{C0F80578-43DC-40C9-B49C-4330E79FD7DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B48743D-2E23-4238-8BFD-D48E0C614D4A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2B48743D-2E23-4238-8BFD-D48E0C614D4A}.Debug|Win32.Build.0 = Debug|Win32
+		{2B48743D-2E23-4238-8BFD-D48E0C614D4A}.Release|Win32.ActiveCfg = Release|Win32
+		{2B48743D-2E23-4238-8BFD-D48E0C614D4A}.Release|Win32.Build.0 = Release|Win32
+		{C0F80578-43DC-40C9-B49C-4330E79FD7DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C0F80578-43DC-40C9-B49C-4330E79FD7DA}.Debug|Win32.Build.0 = Debug|Win32
+		{C0F80578-43DC-40C9-B49C-4330E79FD7DA}.Release|Win32.ActiveCfg = Release|Win32
+		{C0F80578-43DC-40C9-B49C-4330E79FD7DA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
